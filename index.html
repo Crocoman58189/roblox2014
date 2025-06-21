@@ -1,38 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Roblox 2014 - Games</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background-color: #fff;
     }
 
+    /* Topbar */
     .topbar {
       position: fixed;
       top: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #3366cc;
+      left: 0;
+      right: 0;
       height: 40px;
+      background-color: #3366cc;
+      color: white;
       display: flex;
       align-items: center;
-      padding: 0 15px;
-      color: white;
+      padding: 0 10px;
       font-size: 13px;
+      z-index: 1000;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
     .topbar img.logo {
       height: 24px;
-      margin-right: 20px;
     }
 
     .topbar a {
       color: white;
       text-decoration: none;
-      margin-right: 20px;
       font-weight: bold;
     }
 
@@ -42,7 +45,6 @@
       align-items: center;
       gap: 10px;
       font-weight: bold;
-      padding-right: 20px;
     }
 
     .topbar .currency img {
@@ -50,52 +52,56 @@
       vertical-align: middle;
     }
 
+    /* Sidebar */
     .sidebar {
       position: fixed;
       top: 40px;
       left: 0;
+      bottom: 0;
       width: 170px;
-      background-color: #f2f2f2;
-      height: 100%;
-      padding: 15px 10px;
+      background: #f2f2f2;
+      padding: 10px;
       border-right: 1px solid #ccc;
       overflow-y: auto;
-      z-index: 999;
+      box-sizing: border-box;
     }
 
     .sidebar a {
       display: block;
-      padding: 6px 8px;
+      padding: 8px;
       margin-bottom: 5px;
-      font-size: 13px;
-      text-decoration: none;
       color: #000;
+      text-decoration: none;
+      font-size: 14px;
+      border-radius: 3px;
     }
 
     .sidebar a:hover {
       background-color: #ddd;
     }
 
+    /* Main content */
     .main {
       margin-left: 180px;
-      margin-right: 220px;
-      padding: 20px;
-      margin-top: 60px;
+      padding: 60px 20px 20px 20px;
+      box-sizing: border-box;
     }
 
+    /* Search bar */
     .search-bar {
       margin-bottom: 20px;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 8px;
+      padding: 10px;
       font-size: 14px;
       border: 1px solid #ccc;
-      border-radius: 2px;
+      border-radius: 3px;
       box-sizing: border-box;
     }
 
+    /* Sections */
     .section {
       margin-bottom: 35px;
     }
@@ -106,19 +112,18 @@
       align-items: center;
       font-weight: bold;
       font-size: 15px;
-      color: #000;
       border-bottom: 1px solid #ccc;
       padding-bottom: 5px;
+      color: #000;
     }
 
     .section-header a {
       font-size: 12px;
       color: white;
-      text-decoration: none;
-      padding: 4px 10px;
       background: linear-gradient(to bottom, #4da6ff, #0066cc);
-      border: 1px solid #004c99;
+      padding: 5px 10px;
       border-radius: 2px;
+      text-decoration: none;
       box-shadow: 0 1px 2px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
     }
@@ -127,6 +132,7 @@
       background: linear-gradient(to bottom, #3399ff, #005cb3);
     }
 
+    /* Games */
     .games {
       display: flex;
       flex-wrap: wrap;
@@ -137,10 +143,11 @@
     .game {
       width: 160px;
       border: 1px solid #ccc;
-      border-radius: 2px;
+      border-radius: 3px;
       font-size: 12px;
       text-align: center;
-      background-color: #fff;
+      background: #fff;
+      box-sizing: border-box;
     }
 
     .game img {
@@ -148,34 +155,31 @@
       height: 90px;
       object-fit: cover;
       border-bottom: 1px solid #ccc;
+      border-radius: 3px 3px 0 0;
     }
 
+    /* Ads */
     .ads {
       position: fixed;
-      right: 10px;
       top: 60px;
+      right: 10px;
       width: 200px;
+      display: block;
     }
 
     .ads img {
       width: 100%;
       margin-bottom: 15px;
       border: 1px solid #ccc;
+      border-radius: 3px;
     }
 
-    /* Responsive pour mobile */
+    /* Responsive for mobile */
     @media (max-width: 600px) {
       .topbar {
         height: auto;
-        flex-wrap: wrap;
         padding: 10px;
-        font-size: 12px;
-        justify-content: flex-start;
         gap: 10px;
-      }
-
-      .topbar a {
-        margin: 0 10px 5px 0;
       }
 
       .sidebar {
@@ -184,41 +188,37 @@
         height: auto;
         border-right: none;
         border-bottom: 1px solid #ccc;
-        padding: 10px;
         display: flex;
         overflow-x: auto;
         gap: 10px;
-        z-index: 1000;
-        background-color: #f2f2f2;
+        padding: 10px 5px;
       }
 
       .sidebar a {
         flex: 0 0 auto;
-        padding: 8px 12px;
         font-size: 14px;
+        padding: 10px 15px;
+        margin: 0;
         white-space: nowrap;
+        border-radius: 5px;
+        background: #ddd;
       }
 
       .main {
         margin-left: 0;
-        margin-right: 0;
-        padding: 10px;
-        margin-top: 10px;
+        padding: 20px 10px 10px 10px;
       }
 
       .search-bar {
-        margin-bottom: 15px;
-        padding: 0 10px;
+        margin: 0 10px 20px 10px;
       }
 
       .search-bar input {
-        width: 100%;
         font-size: 16px;
-        padding: 10px;
+        padding: 12px;
       }
 
       .games {
-        gap: 5px;
         justify-content: center;
       }
 
@@ -231,14 +231,9 @@
       }
 
       .section-header {
-        font-size: 14px;
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
-      }
-
-      .section-header a {
-        font-size: 12px;
       }
     }
   </style>
