@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Roblox 2014 - Games</title>
+  <title>Roblox 2014 - Responsive</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #fff;
+      background: #fff;
     }
 
     /* Topbar */
@@ -26,19 +26,15 @@
       font-size: 13px;
       z-index: 1000;
       gap: 15px;
-      flex-wrap: wrap;
     }
-
     .topbar img.logo {
       height: 24px;
     }
-
     .topbar a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-
     .topbar .currency {
       margin-left: auto;
       display: flex;
@@ -46,13 +42,12 @@
       gap: 10px;
       font-weight: bold;
     }
-
     .topbar .currency img {
       height: 16px;
       vertical-align: middle;
     }
 
-    /* Sidebar */
+    /* Sidebar vertical desktop */
     .sidebar {
       position: fixed;
       top: 40px;
@@ -65,7 +60,6 @@
       overflow-y: auto;
       box-sizing: border-box;
     }
-
     .sidebar a {
       display: block;
       padding: 8px;
@@ -75,7 +69,6 @@
       font-size: 14px;
       border-radius: 3px;
     }
-
     .sidebar a:hover {
       background-color: #ddd;
     }
@@ -91,7 +84,6 @@
     .search-bar {
       margin-bottom: 20px;
     }
-
     .search-bar input {
       width: 100%;
       padding: 10px;
@@ -105,7 +97,6 @@
     .section {
       margin-bottom: 35px;
     }
-
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -116,7 +107,6 @@
       padding-bottom: 5px;
       color: #000;
     }
-
     .section-header a {
       font-size: 12px;
       color: white;
@@ -127,7 +117,6 @@
       box-shadow: 0 1px 2px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
     }
-
     .section-header a:hover {
       background: linear-gradient(to bottom, #3399ff, #005cb3);
     }
@@ -139,7 +128,6 @@
       gap: 10px;
       margin-top: 10px;
     }
-
     .game {
       width: 160px;
       border: 1px solid #ccc;
@@ -149,7 +137,6 @@
       background: #fff;
       box-sizing: border-box;
     }
-
     .game img {
       width: 100%;
       height: 90px;
@@ -166,7 +153,6 @@
       width: 200px;
       display: block;
     }
-
     .ads img {
       width: 100%;
       margin-bottom: 15px;
@@ -174,62 +160,73 @@
       border-radius: 3px;
     }
 
-    /* Responsive for mobile */
+    /* Responsive pour mobile */
     @media (max-width: 600px) {
+      /* Topbar */
       .topbar {
+        flex-wrap: wrap;
         height: auto;
         padding: 10px;
-        gap: 10px;
       }
 
+      /* Sidebar devient barre horizontale */
       .sidebar {
-        position: relative;
+        position: fixed;
+        top: 40px;
+        left: 0;
+        right: 0;
+        height: 50px;
         width: 100%;
-        height: auto;
+        background: #f2f2f2;
         border-right: none;
         border-bottom: 1px solid #ccc;
         display: flex;
         overflow-x: auto;
-        gap: 10px;
-        padding: 10px 5px;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 5px 0;
+        box-sizing: border-box;
+        z-index: 1000;
       }
-
       .sidebar a {
         flex: 0 0 auto;
-        font-size: 14px;
         padding: 10px 15px;
-        margin: 0;
-        white-space: nowrap;
+        margin: 0 5px;
+        font-size: 14px;
         border-radius: 5px;
         background: #ddd;
+        line-height: 1;
       }
 
+      /* Main content */
       .main {
         margin-left: 0;
-        padding: 20px 10px 10px 10px;
+        padding: 110px 10px 20px 10px;
       }
 
+      /* Search bar */
       .search-bar {
         margin: 0 10px 20px 10px;
       }
-
       .search-bar input {
         font-size: 16px;
         padding: 12px;
       }
 
-      .games {
-        justify-content: center;
-      }
-
-      .game {
-        width: 45%;
-      }
-
+      /* Hide ads on mobile */
       .ads {
         display: none;
       }
 
+      /* Games */
+      .games {
+        justify-content: center;
+      }
+      .game {
+        width: 45%;
+      }
+
+      /* Section header vertical on mobile */
       .section-header {
         flex-direction: column;
         align-items: flex-start;
