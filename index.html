@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Roblox 2014 - Games</title>
   <style>
     body {
@@ -19,26 +20,31 @@
       height: auto;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       flex-wrap: wrap;
-      padding: 5px 10px;
+      padding: 5px 15px;
       color: white;
       font-size: 13px;
     }
 
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .topbar img.logo {
       height: 24px;
-      margin-right: 20px;
     }
 
     .topbar a {
       color: white;
       text-decoration: none;
-      margin-right: 20px;
       font-weight: bold;
     }
 
     .currency {
-      margin-left: auto;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -49,16 +55,14 @@
       height: 16px;
     }
 
-    .daily-tix {
-      background: linear-gradient(to bottom, #ffd700, #e6b800);
-      border: 1px solid #b38f00;
-      padding: 4px 10px;
-      border-radius: 3px;
+    .daily-tix-btn {
+      background: yellow;
       color: black;
+      padding: 4px 10px;
+      border: 1px solid #888;
+      border-radius: 3px;
       font-weight: bold;
-      margin-left: 10px;
       cursor: pointer;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
     }
 
     .sidebar {
@@ -116,6 +120,11 @@
       border: 1px solid #004c99;
       border-radius: 2px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+
+    .section-header a:hover {
+      background: linear-gradient(to bottom, #3399ff, #005cb3);
     }
 
     .games {
@@ -175,18 +184,17 @@
       }
 
       .sidebar {
-        top: 80px;
-        left: 0;
-        right: 0;
-        height: auto;
+        position: static;
         width: 100%;
+        height: auto;
         background: #f2f2f2;
-        border-right: none;
-        border-bottom: 1px solid #ccc;
+        border: none;
         display: flex;
+        flex-wrap: nowrap;
         overflow-x: auto;
-        white-space: nowrap;
         padding: 5px 0;
+        white-space: nowrap;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
 
       .sidebar a {
@@ -199,7 +207,7 @@
       }
 
       .main {
-        margin: 150px 10px 20px 10px;
+        margin: 20px 10px;
       }
 
       .ads {
@@ -240,15 +248,17 @@
 <body>
 
   <div class="topbar">
-    <img src="images/logo.png" alt="Roblox Logo" class="logo">
-    <a href="#">Games</a>
-    <a href="#">Catalog</a>
-    <a href="#">Develop</a>
-    <a href="#">Profile</a>
+    <div class="topbar-left">
+      <img src="images/logo.png" alt="Roblox Logo" class="logo">
+      <a href="#">Games</a>
+      <a href="#">Catalog</a>
+      <a href="#">Develop</a>
+      <a href="#">Profile</a>
+    </div>
     <div class="currency">
       <img src="images/tix.png" alt="Tix"> 1,234
       <img src="images/robux.png" alt="Robux"> 567
-      <div class="daily-tix" onclick="alert('+10 Tix ajoutés !')">Daily Tix</div>
+      <button class="daily-tix-btn">Daily Tix</button>
     </div>
   </div>
 
