@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roblox 2014 - Games</title>
   <style>
     body {
@@ -23,13 +22,11 @@
       padding: 0 15px;
       color: white;
       font-size: 13px;
-      flex-wrap: nowrap;
     }
 
     .topbar img.logo {
       height: 24px;
       margin-right: 20px;
-      flex-shrink: 0;
     }
 
     .topbar a {
@@ -37,7 +34,6 @@
       text-decoration: none;
       margin-right: 20px;
       font-weight: bold;
-      white-space: nowrap;
     }
 
     .topbar .currency {
@@ -47,7 +43,6 @@
       gap: 10px;
       font-weight: bold;
       padding-right: 20px;
-      white-space: nowrap;
     }
 
     .topbar .currency img {
@@ -61,10 +56,11 @@
       left: 0;
       width: 170px;
       background-color: #f2f2f2;
-      height: calc(100% - 40px);
+      height: 100%;
       padding: 15px 10px;
       border-right: 1px solid #ccc;
       overflow-y: auto;
+      z-index: 999;
     }
 
     .sidebar a {
@@ -74,7 +70,6 @@
       font-size: 13px;
       text-decoration: none;
       color: #000;
-      white-space: nowrap;
     }
 
     .sidebar a:hover {
@@ -86,6 +81,19 @@
       margin-right: 220px;
       padding: 20px;
       margin-top: 60px;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 2px;
+      box-sizing: border-box;
     }
 
     .section {
@@ -113,7 +121,6 @@
       border-radius: 2px;
       box-shadow: 0 1px 2px rgba(0,0,0,0.3);
       transition: background 0.3s ease;
-      white-space: nowrap;
     }
 
     .section-header a:hover {
@@ -134,13 +141,6 @@
       font-size: 12px;
       text-align: center;
       background-color: #fff;
-      cursor: pointer;
-      user-select: none;
-      transition: box-shadow 0.2s ease;
-    }
-
-    .game:hover {
-      box-shadow: 0 0 10px #6699ff;
     }
 
     .game img {
@@ -148,7 +148,6 @@
       height: 90px;
       object-fit: cover;
       border-bottom: 1px solid #ccc;
-      pointer-events: none;
     }
 
     .ads {
@@ -162,24 +161,9 @@
       width: 100%;
       margin-bottom: 15px;
       border: 1px solid #ccc;
-      user-select: none;
-      pointer-events: none;
     }
 
-    .search-bar {
-      margin-bottom: 20px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-    }
-
-    /* Responsive Mobile */
-
+    /* Responsive pour mobile */
     @media (max-width: 600px) {
       .topbar {
         height: auto;
@@ -204,12 +188,15 @@
         display: flex;
         overflow-x: auto;
         gap: 10px;
+        z-index: 1000;
+        background-color: #f2f2f2;
       }
 
       .sidebar a {
         flex: 0 0 auto;
         padding: 8px 12px;
         font-size: 14px;
+        white-space: nowrap;
       }
 
       .main {
@@ -217,6 +204,17 @@
         margin-right: 0;
         padding: 10px;
         margin-top: 10px;
+      }
+
+      .search-bar {
+        margin-bottom: 15px;
+        padding: 0 10px;
+      }
+
+      .search-bar input {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
       }
 
       .games {
@@ -241,10 +239,6 @@
 
       .section-header a {
         font-size: 12px;
-      }
-
-      .search-bar input {
-        font-size: 16px;
       }
     }
   </style>
@@ -278,43 +272,90 @@
 
   <div class="main">
     <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Search games..." />
+      <input type="text" placeholder="Search games..." />
     </div>
 
-    <div class="section" data-section="popular">
-      <div class="section-header">Popular <a href="#">See All</a></div>
+    <div class="section">
+      <div class="section-header">
+        Popular <a href="#">See All</a>
+      </div>
       <div class="games">
-        <div class="game"><img src="images/game1.png" alt="Natural Disaster Survival" /><div>Natural Disaster Survival</div></div>
-        <div class="game"><img src="images/game2.png" alt="Ride a Box Down Stuff" /><div>Ride a Box Down Stuff</div></div>
-        <div class="game"><img src="images/game3.png" alt="Roblox Summer Run" /><div>Roblox Summer Run</div></div>
-        <div class="game"><img src="images/game4.png" alt="Build to Survive the Zombies" /><div>Build to Survive the Zombies</div></div>
+        <div class="game">
+          <img src="images/game1.png" alt="Natural Disaster Survival" />
+          <div>Natural Disaster Survival</div>
+        </div>
+        <div class="game">
+          <img src="images/game2.png" alt="Ride a Box Down Stuff" />
+          <div>Ride a Box Down Stuff</div>
+        </div>
+        <div class="game">
+          <img src="images/game3.png" alt="Roblox Summer Run" />
+          <div>Roblox Summer Run</div>
+        </div>
+        <div class="game">
+          <img src="images/game4.png" alt="Build to Survive the Zombies" />
+          <div>Build to Survive the Zombies</div>
+        </div>
       </div>
     </div>
 
-    <div class="section" data-section="toppaid">
-      <div class="section-header">Top Paid <a href="#">See All</a></div>
+    <div class="section">
+      <div class="section-header">
+        Top Paid <a href="#">See All</a>
+      </div>
       <div class="games">
-        <div class="game"><img src="images/game5.png" alt="Speed Run 4" /><div>Speed Run 4</div></div>
-        <div class="game"><img src="images/game6.png" alt="Base Wars" /><div>Base Wars</div></div>
-        <div class="game"><img src="images/game7.png" alt="Work at a Pizza Place" /><div>Work at a Pizza Place</div></div>
+        <div class="game">
+          <img src="images/game5.png" alt="Speed Run 4" />
+          <div>Speed Run 4</div>
+        </div>
+        <div class="game">
+          <img src="images/game6.png" alt="Base Wars" />
+          <div>Base Wars</div>
+        </div>
+        <div class="game">
+          <img src="images/game7.png" alt="Work at a Pizza Place" />
+          <div>Work at a Pizza Place</div>
+        </div>
       </div>
     </div>
 
-    <div class="section" data-section="recentlyupdated">
-      <div class="section-header">Recently Updated <a href="#">See All</a></div>
+    <div class="section">
+      <div class="section-header">
+        Recently Updated <a href="#">See All</a>
+      </div>
       <div class="games">
-        <div class="game"><img src="images/game8.png" alt="Zombie Rush" /><div>Zombie Rush</div></div>
-        <div class="game"><img src="images/game9.png" alt="Murder Mystery 2" /><div>Murder Mystery 2</div></div>
-        <div class="game"><img src="images/game10.png" alt="Theme Park Tycoon" /><div>Theme Park Tycoon</div></div>
+        <div class="game">
+          <img src="images/game8.png" alt="Zombie Rush" />
+          <div>Zombie Rush</div>
+        </div>
+        <div class="game">
+          <img src="images/game9.png" alt="Murder Mystery 2" />
+          <div>Murder Mystery 2</div>
+        </div>
+        <div class="game">
+          <img src="images/game10.png" alt="Theme Park Tycoon" />
+          <div>Theme Park Tycoon</div>
+        </div>
       </div>
     </div>
 
-    <div class="section" data-section="classics">
-      <div class="section-header">Classics <a href="#">See All</a></div>
+    <div class="section">
+      <div class="section-header">
+        Classics <a href="#">See All</a>
+      </div>
       <div class="games">
-        <div class="game"><img src="images/game11.png" alt="Crossroads" /><div>Crossroads</div></div>
-        <div class="game"><img src="images/game12.png" alt="Chaos Canyon" /><div>Chaos Canyon</div></div>
-        <div class="game"><img src="images/game13.png" alt="Rocket Arena" /><div>Rocket Arena</div></div>
+        <div class="game">
+          <img src="images/game11.png" alt="Crossroads" />
+          <div>Crossroads</div>
+        </div>
+        <div class="game">
+          <img src="images/game12.png" alt="Chaos Canyon" />
+          <div>Chaos Canyon</div>
+        </div>
+        <div class="game">
+          <img src="images/game13.png" alt="Rocket Arena" />
+          <div>Rocket Arena</div>
+        </div>
       </div>
     </div>
   </div>
@@ -325,21 +366,5 @@
     <img src="images/ad3.png" alt="Ad 3" />
   </div>
 
-  <script>
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', () => {
-      const filter = searchInput.value.toLowerCase();
-      const games = document.querySelectorAll('.game');
-
-      games.forEach(game => {
-        const title = game.textContent.toLowerCase();
-        if (title.includes(filter)) {
-          game.style.display = '';
-        } else {
-          game.style.display = 'none';
-        }
-      });
-    });
-  </script>
 </body>
 </html>
