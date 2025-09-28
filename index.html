@@ -1,328 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Roblox 2014 - Games</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portal Bounce Prototype</title>
+<style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #ffffff;
-    }
-
-    .topbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-      background-color: #3366cc;
-      height: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      padding: 5px 15px;
-      color: white;
-      font-size: 13px;
-    }
-
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    .topbar img.logo {
-      height: 24px;
-    }
-
-    .topbar a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .currency {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-    }
-
-    .currency img {
-      height: 16px;
-    }
-
-    .daily-tix-btn {
-      background: yellow;
-      color: black;
-      padding: 4px 10px;
-      border: 1px solid #888;
-      border-radius: 3px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .sidebar {
-      position: fixed;
-      top: 40px;
-      left: 0;
-      width: 170px;
-      background-color: #f2f2f2;
-      height: 100%;
-      padding: 15px 10px;
-      border-right: 1px solid #ccc;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 6px 8px;
-      margin-bottom: 5px;
-      font-size: 13px;
-      text-decoration: none;
-      color: #000;
-    }
-
-    .sidebar a:hover {
-      background-color: #ddd;
-    }
-
-    .main {
-      margin-left: 180px;
-      margin-right: 220px;
-      padding: 20px;
-      margin-top: 60px;
-    }
-
-    .section {
-      margin-bottom: 35px;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: bold;
-      font-size: 15px;
-      color: #000;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
-    }
-
-    .section-header a {
-      font-size: 12px;
-      color: white;
-      text-decoration: none;
-      padding: 4px 10px;
-      background: linear-gradient(to bottom, #4da6ff, #0066cc);
-      border: 1px solid #004c99;
-      border-radius: 2px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-      transition: background 0.3s ease;
-    }
-
-    .section-header a:hover {
-      background: linear-gradient(to bottom, #3399ff, #005cb3);
-    }
-
-    .games {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .game {
-      width: 160px;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-      font-size: 12px;
-      text-align: center;
-      background-color: #fff;
-    }
-
-    .game img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
-      border-bottom: 1px solid #ccc;
-    }
-
-    .ads {
-      position: fixed;
-      right: 10px;
-      top: 60px;
-      width: 200px;
-    }
-
-    .ads img {
-      width: 100%;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-    }
-
-    .search-bar {
-      margin-bottom: 20px;
-    }
-
-    .search-bar input {
-      width: 100%;
-      padding: 8px;
-      font-size: 14px;
-      border: 1px solid #ccc;
-      border-radius: 2px;
-    }
-
-    /* Responsive - Mobile Portrait */
-    @media (max-width: 600px) and (orientation: portrait) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-      }
-
-      .sidebar {
-        position: static;
-        width: 100%;
-        height: auto;
-        background: #f2f2f2;
-        border: none;
+        margin: 0;
+        overflow: hidden;
+        background: #222;
         display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding: 5px 0;
-        white-space: nowrap;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      }
-
-      .sidebar a {
-        flex: 0 0 auto;
-        padding: 10px 15px;
-        margin: 0 5px;
-        font-size: 14px;
-        background: #ddd;
-        border-radius: 5px;
-      }
-
-      .main {
-        margin: 20px 10px;
-      }
-
-      .ads {
-        display: none;
-      }
-
-      .game {
-        width: 45%;
-      }
+        justify-content: center;
+        align-items: center;
     }
-
-    /* Responsive - Mobile Landscape */
-    @media (max-width: 600px) and (orientation: landscape) {
-      .sidebar {
-        position: fixed;
-        top: 40px;
-        left: 0;
-        width: 170px;
-        height: 100%;
-        border-right: 1px solid #ccc;
-        background: #f2f2f2;
-        padding: 10px;
-        display: block;
-      }
-
-      .main {
-        margin-left: 180px;
-        margin-right: 10px;
-        margin-top: 60px;
-      }
-
-      .ads {
-        display: none;
-      }
+    canvas {
+        background: #111;
+        border: 3px solid #fff;
     }
-  </style>
+</style>
 </head>
 <body>
+<canvas id="game" width="400" height="700"></canvas>
+<script>
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
 
-  <div class="topbar">
-    <div class="topbar-left">
-      <img src="images/logo.png" alt="Roblox Logo" class="logo">
-      <a href="#">Games</a>
-      <a href="#">Catalog</a>
-      <a href="#">Develop</a>
-      <a href="#">Profile</a>
-    </div>
-    <div class="currency">
-      <img src="images/tix.png" alt="Tix"> 1,234
-      <img src="images/robux.png" alt="Robux"> 567
-      <button class="daily-tix-btn">Daily Tix</button>
-    </div>
-  </div>
+const player = { x: 180, y: 600, w: 40, h: 40, color: 'yellow', vy: 0 };
+const gravity = 0.5;
+const portals = { blue: null, orange: null };
+const keys = {};
 
-  <div class="sidebar">
-    <a href="#">My Roblox</a>
-    <a href="#">Profile</a>
-    <a href="#">Friends</a>
-    <a href="#">Messages</a>
-    <a href="#">Avatar</a>
-    <a href="#">Inventory</a>
-    <a href="#">Character</a>
-    <a href="#">Groups</a>
-    <a href="#">Trade</a>
-    <a href="#">Adventures</a>
-  </div>
+const platforms = [
+    { x: 50, y: 650, w: 300, h: 20 },
+    { x: 100, y: 500, w: 200, h: 20 },
+    { x: 50, y: 350, w: 300, h: 20 },
+];
 
-  <div class="main">
-    <div class="search-bar">
-      <input type="text" placeholder="Search games...">
-    </div>
+document.addEventListener('keydown', e => keys[e.key] = true);
+document.addEventListener('keyup', e => keys[e.key] = false);
 
-    <div class="section">
-      <div class="section-header">Popular <a href="#">See All</a></div>
-      <div class="games">
-        <div class="game"><img src="images/game1.png"><div>Natural Disaster Survival</div></div>
-        <div class="game"><img src="images/game2.png"><div>Ride a Box Down Stuff</div></div>
-        <div class="game"><img src="images/game3.png"><div>Roblox Summer Run</div></div>
-        <div class="game"><img src="images/game4.png"><div>Build to Survive the Zombies</div></div>
-      </div>
-    </div>
+canvas.addEventListener('click', e => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const my = e.clientY - rect.top;
+    if (!portals.blue) portals.blue = { x: mx, y: my };
+    else if (!portals.orange) portals.orange = { x: mx, y: my };
+    else {
+        portals.blue = { ...portals.orange };
+        portals.orange = { x: mx, y: my };
+    }
+});
 
-    <div class="section">
-      <div class="section-header">Top Paid <a href="#">See All</a></div>
-      <div class="games">
-        <div class="game"><img src="images/game5.png"><div>Speed Run 4</div></div>
-        <div class="game"><img src="images/game6.png"><div>Base Wars</div></div>
-        <div class="game"><img src="images/game7.png"><div>Work at a Pizza Place</div></div>
-      </div>
-    </div>
+function update() {
+    // Gravité
+    player.vy += gravity;
+    player.y += player.vy;
 
-    <div class="section">
-      <div class="section-header">Recently Updated <a href="#">See All</a></div>
-      <div class="games">
-        <div class="game"><img src="images/game8.png"><div>Zombie Rush</div></div>
-        <div class="game"><img src="images/game9.png"><div>Murder Mystery 2</div></div>
-        <div class="game"><img src="images/game10.png"><div>Theme Park Tycoon</div></div>
-      </div>
-    </div>
+    // Collision plateformes
+    platforms.forEach(p => {
+        if (player.x < p.x + p.w && player.x + player.w > p.x &&
+            player.y + player.h < p.y + p.h && player.y + player.h > p.y &&
+            player.vy > 0) {
+            player.y = p.y - player.h;
+            player.vy = 0;
+        }
+    });
 
-    <div class="section">
-      <div class="section-header">Classics <a href="#">See All</a></div>
-      <div class="games">
-        <div class="game"><img src="images/game11.png"><div>Crossroads</div></div>
-        <div class="game"><img src="images/game12.png"><div>Chaos Canyon</div></div>
-        <div class="game"><img src="images/game13.png"><div>Rocket Arena</div></div>
-      </div>
-    </div>
-  </div>
+    // Déplacement horizontal
+    if (keys['ArrowLeft']) player.x -= 5;
+    if (keys['ArrowRight']) player.x += 5;
 
-  <div class="ads">
-    <img src="images/ad1.png" alt="Ad 1">
-    <img src="images/ad2.png" alt="Ad 2">
-    <img src="images/ad3.png" alt="Ad 3">
-  </div>
+    // Collision avec portails
+    for (let color in portals) {
+        const portal = portals[color];
+        if (portal &&
+            player.x < portal.x + 40 && player.x + player.w > portal.x &&
+            player.y < portal.y + 40 && player.y + player.h > portal.y) {
+            const other = color === 'blue' ? portals.orange : portals.blue;
+            if (other) {
+                player.x = other.x;
+                player.y = other.y;
+            }
+        }
+    }
+}
 
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Plateformes
+    ctx.fillStyle = 'white';
+    platforms.forEach(p => ctx.fillRect(p.x, p.y, p.w, p.h));
+
+    // Portails
+    if (portals.blue) { ctx.fillStyle = 'blue'; ctx.fillRect(portals.blue.x, portals.blue.y, 40, 40); }
+    if (portals.orange) { ctx.fillStyle = 'orange'; ctx.fillRect(portals.orange.x, portals.orange.y, 40, 40); }
+
+    // Joueur
+    ctx.fillStyle = player.color;
+    ctx.fillRect(player.x, player.y, player.w, player.h);
+}
+
+function gameLoop() {
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
 </body>
 </html>
